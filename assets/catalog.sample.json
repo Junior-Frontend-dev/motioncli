@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "wallpapers": [
+    {
+      "id": "big-buck-bunny",
+      "title": "Big Buck Bunny",
+      "author": "Blender Foundation",
+      "preview": "https://peach.blender.org/wp-content/uploads/bbb-splash.png",
+      "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "tags": ["animation", "nature", "colorful"],
+      "resolution": "1280x720",
+      "size_mb": 158
+    },
+    {
+      "id": "elephants-dream",
+      "title": "Elephants Dream",
+      "author": "Blender Foundation",
+      "preview": "https://orange.blender.org/wp-content/themes/orange/images/media/gallery/s1_proog.jpg",
+      "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+      "tags": ["animation", "surreal", "dark"],
+      "resolution": "1280x720",
+      "size_mb": 169
+    },
+    {
+      "id": "sintel",
+      "title": "Sintel",
+      "author": "Blender Foundation",
+      "preview": "https://durian.blender.org/wp-content/uploads/2010/06/05.4b_comp_000260.jpg",
+      "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
+      "tags": ["animation", "fantasy", "epic"],
+      "resolution": "1280x720",
+      "size_mb": 114
+    },
+    {
+      "id": "for-bigger-blazes",
+      "title": "For Bigger Blazes",
+      "author": "Google",
+      "preview": "",
+      "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+      "tags": ["short", "bright"],
+      "resolution": "1280x720",
+      "size_mb": 2
+    },
+    {
+      "id": "for-bigger-joyrides",
+      "title": "For Bigger Joyrides",
+      "author": "Google",
+      "preview": "",
+      "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
+      "tags": ["short", "drive"],
+      "resolution": "1280x720",
+      "size_mb": 3
+    }
+  ]
+}
