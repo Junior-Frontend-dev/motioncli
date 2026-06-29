@@ -7,7 +7,7 @@
   <img src="https://img.shields.io/badge/platform-Windows_10%2F11-lightgrey?style=flat-square" alt="Platform">
   <img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" alt="License">
   <img src="https://img.shields.io/badge/C++-17-blue?style=flat-square" alt="C++17">
-  <img src="https://img.shields.io/github/stars/tenzo/motioncli?style=flat-square&color=yellow" alt="Stars">
+  <img src="https://img.shields.io/github/stars/RealTenzo/motioncli?style=flat-square&color=yellow" alt="Stars">
 </p>
 
 <p align="center">
