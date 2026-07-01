@@ -53,7 +53,9 @@ std::string sanitize(const std::string& s) {
 bool parseCatalog(const std::string& body, std::vector<Wallpaper>& out, std::string& err) {
     Json root = Json::parse(body);
     if (root.isNull()) {
-        err = std::string("Invalid catalog JSON: ") + Json::lastError();
+        const char* le = Json::lastError();
+        err = "Invalid catalog JSON";
+        if (le) { err += ": "; err += le; }
         return false;
     }
 
@@ -152,7 +154,12 @@ bool Library::fetchPexels(const std::wstring& apiKey, const std::string& query,
     if (!http::getString(url, body, err, headers)) return false;
 
     Json root = Json::parse(body);
-    if (root.isNull()) { err = std::string("Pexels JSON: ") + Json::lastError(); return false; }
+    if (root.isNull()) {
+        const char* le = Json::lastError();
+        err = "Pexels JSON";
+        if (le) { err += ": "; err += le; }
+        return false;
+    }
 
     const Json& videos = root["videos"];
     if (!videos.isArray()) { err = "Pexels returned no videos"; return false; }
@@ -465,7 +472,7 @@ bool Library::ensureDownloaded(const Wallpaper& w,
         static void bridge(unsigned long long received, unsigned long long total, void* ctx) {
             auto* self = (ProgressThunk*)ctx;
             if (!self->cb) return;
-            if (total > 0) self->cb((int)((received * 100) / total), self->ctx);
+            if (total > 0) { int p = (int)((received * 100) / total); if (p > 100) p = 100; self->cb(p, self->ctx); }
             else           self->cb(-1, self->ctx);
         }
     };

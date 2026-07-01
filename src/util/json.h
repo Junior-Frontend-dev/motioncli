@@ -53,7 +53,3 @@ private:
 };
 
 }
-
-inline bool operator<(const std::pair<std::string, motion::Json>& a, const std::string& b) {
-    return a.first < b;
-}

@@ -499,7 +499,7 @@ void App::previewWallpaper(const Wallpaper& w) {
         }
         std::vector<unsigned char> raw;
         std::string err;
-        if (http::getBytes(widen(w.preview), raw, err))
+        if (http::getBytes(widen(w.preview), raw, err, L"", 1024 * 1024))
             tui::renderImageFromMemory(raw, cols, rows, img);
     }
 

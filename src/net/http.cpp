@@ -161,11 +161,11 @@ bool getString(const std::wstring& url, std::string& outBody, std::string& err,
             err = lastError("WinHttpReadData");
             return false;
         }
-        outBody.append(chunk.data(), read);
-        if (outBody.size() > 1024 * 1024) {
+        if (outBody.size() + read > 1024 * 1024) {
             err = "Response too large";
             return false;
         }
+        outBody.append(chunk.data(), read);
     } while (avail > 0);
 
     return true;
@@ -230,7 +230,8 @@ bool downloadFile(const std::wstring& url,
 }
 
 bool getBytes(const std::wstring& url, std::vector<unsigned char>& out,
-              std::string& err, const std::wstring& extraHeaders) {
+              std::string& err, const std::wstring& extraHeaders,
+              unsigned long long maxSize) {
     OpenedRequest r = openGet(url, err, extraHeaders);
     if (!r.ok) return false;
 
@@ -244,6 +245,11 @@ bool getBytes(const std::wstring& url, std::vector<unsigned char>& out,
             return false;
         }
         if (avail == 0) break;
+
+        if (maxSize && out.size() + avail > maxSize) {
+            err = "Response too large";
+            return false;
+        }
 
         chunk.resize(avail);
         DWORD read = 0;

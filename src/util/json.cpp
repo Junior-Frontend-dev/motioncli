@@ -44,15 +44,17 @@ namespace {
 struct Parser {
     const char* p;
     const char* end;
+    bool failed = false;
 
     explicit Parser(const std::string& s) : p(s.data()), end(s.data() + s.size()) {}
 
     void fail(const char* msg) {
         Json::setError(msg);
+        failed = true;
         p = end;
     }
 
-    bool ok() const { return p <= end; }
+    bool ok() const { return !failed && p <= end; }
 
     void skipWs() {
         while (p < end && (*p == ' ' || *p == '\t' || *p == '\n' || *p == '\r')) ++p;
@@ -129,7 +131,7 @@ struct Parser {
         std::string token(start, p);
         char* endp = nullptr;
         double val = std::strtod(token.c_str(), &endp);
-        if (endp == token.c_str()) { fail("invalid number"); return {}; }
+        if (endp == token.c_str() || *endp != '\0') { fail("invalid number"); return {}; }
         Json j;
         j.type = Json::Type::Number;
         j.number = val;

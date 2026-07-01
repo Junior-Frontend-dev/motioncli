@@ -16,6 +16,7 @@ bool downloadFile(const std::wstring& url,
                   std::string& err);
 
 bool getBytes(const std::wstring& url, std::vector<unsigned char>& out,
-              std::string& err, const std::wstring& extraHeaders = L"");
+              std::string& err, const std::wstring& extraHeaders = L"",
+              unsigned long long maxSize = 0);
 
 }
